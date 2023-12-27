@@ -53,13 +53,13 @@ WITH RankedArtists AS (
 )
 -- Selecting specific columns from the RankedArtists CTE where the artist has the highest rank (1) in each released year.
 SELECT
-    Year,                                     -- Selecting the Year column.
-    streams AS Streams,                       -- Selecting the streams column.
-    Artist,                                   -- Selecting the Artist column.
-    track_name AS "Track Name"                -- Selecting the Track Name column and aliasing it.
+    Year,                                     	-- Selecting the Year column.
+    streams AS Streams,                       	-- Selecting the streams column.
+    Artist,                                   	-- Selecting the Artist column.
+    track_name AS "Track Name"                	-- Selecting the Track Name column and aliasing it.
 FROM RankedArtists
-WHERE ArtistRank = 1                          -- Filtering only rows where the artist has the highest rank.
-ORDER BY Year ASC;                            -- Sorting the result by Year in ascending order.
+WHERE ArtistRank = 1                          	-- Filtering only rows where the artist has the highest rank.
+ORDER BY Year ASC;                            	-- Sorting the result by Year in ascending order.
 
 
 
@@ -69,16 +69,16 @@ ORDER BY Year ASC;                            -- Sorting the result by Year in a
 ******************************************************************************************************************************************/
 
 SELECT 
-    MAX(`acousticness_%`) AS Acousticness,  -- Selecting the maximum value of 'acousticness_%' and aliasing it as 'Acousticness'
-	MAX(`danceability_%`) AS Danceability,  -- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
-    MAX(`energy_%`) AS Energy,              -- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
-    MAX(`speechiness_%`) AS Speechiness,    -- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
-    MAX(`valence_%`) AS Valence,            -- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
-    `artist(s)_name` AS Artist,             -- Selecting the 'artist(s)_name' column and aliasing it as 'Artist'
-    track_name AS `Track Name`              -- Selecting the 'track_name' column and aliasing it as 'Track Name'
-FROM updated_spotify_file                   -- From the table named 'updated_spotify_file'
-GROUP BY Artist, `Track Name`               -- Grouping the results by 'Artist' and 'Track Name'
-ORDER BY "Category_%" DESC;                  -- Ordering the results in descending order based on the select Category
+    MAX(`acousticness_%`) AS Acousticness,    	-- Selecting the maximum value of 'acousticness_%' and aliasing it as 'Acousticness'
+	MAX(`danceability_%`) AS Danceability,    	-- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
+    MAX(`energy_%`) AS Energy,                	-- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
+    MAX(`speechiness_%`) AS Speechiness,      	-- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
+    MAX(`valence_%`) AS Valence,              	-- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
+    `artist(s)_name` AS Artist,               	-- Selecting the 'artist(s)_name' column and aliasing it as 'Artist'
+    track_name AS `Track Name`                	-- Selecting the 'track_name' column and aliasing it as 'Track Name'
+FROM updated_spotify_file                     	-- From the table named 'updated_spotify_file'
+GROUP BY Artist, `Track Name`                 	-- Grouping the results by 'Artist' and 'Track Name'
+ORDER BY "Category_%" DESC;                   	-- Ordering the results in descending order based on the select Category
 
 
 /******************************************************************************************************************************************
@@ -86,14 +86,14 @@ ORDER BY "Category_%" DESC;                  -- Ordering the results in descendi
 * Two way tie: Taylor Swift - Sweet Nothing = 97%                                                                                         *
 *			   Lord Huron - The Night We Met = 97%                                                                                        *
 ******************************************************************************************************************************************/
-ORDER BY Acousticness DESC;                   -- Ordering the results in descending order based on 'Acousticness'
+ORDER BY Acousticness DESC;                   	-- Ordering the results in descending order based on 'Acousticness'
 
 
 /****************************************************
 * Tracks from Highest to Lowest Danceability        *
 * Ed Sheeran, Fireboy DML - Peru = 96%              *
 ****************************************************/
-ORDER BY Danceability DESC;                   -- Ordering the results in descending order based on 'Danceability'
+ORDER BY Danceability DESC;                   	-- Ordering the results in descending order based on 'Danceability'
 
 
 /******************************************************************************************************************************************
@@ -101,21 +101,21 @@ ORDER BY Danceability DESC;                   -- Ordering the results in descend
 * Two way tie: Kordhell - Murder In My Mind = 97%                                                                                         *
 *			   Bebe Rexha, David Guetta - I'm Good(Blue) = 97%                                                                            *
 ******************************************************************************************************************************************/
-ORDER BY Energy DESC;                         -- Ordering the results in descending order based on 'Energy'
+ORDER BY Energy DESC;                         	-- Ordering the results in descending order based on 'Energy'
 
 
 /****************************************************
 * Tracks from Highest to Lowest Liveness            *
 * MC Caverinha, KayBlack = Cartão Black = 97%       *
 ****************************************************/
-ORDER BY Liveness DESC;                       -- Ordering the results in descending order based on 'Liveness'
+ORDER BY Liveness DESC;                       	-- Ordering the results in descending order based on 'Liveness'
 
 
 /****************************************************
 * Tracks from Highest to Lowest Speechiness         *
 * MC Caverinha, KayBlack = Cartão Black = 64%       *
 ****************************************************/
-ORDER BY Speechiness DESC;                   -- Ordering the results in descending order based on 'Speechiness'
+ORDER BY Speechiness DESC;                   	-- Ordering the results in descending order based on 'Speechiness'
 
 
 /******************************************************************************************************************************************
@@ -126,4 +126,4 @@ ORDER BY Speechiness DESC;                   -- Ordering the results in descendi
 *               Shawn Mendes - There’s Nothing Holdin’ Me Back = 97%                                                                      *
 *               Leo Santana - Zone De Perigo = 97%                                                                                        *
 ******************************************************************************************************************************************/
-ORDER BY Valence DESC;                      -- Ordering the results in descending order based on 'Valence'
+ORDER BY Valence DESC;                      	-- Ordering the results in descending order based on 'Valence'
