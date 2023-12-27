@@ -22,9 +22,7 @@ SELECT
     monthname(Monthly.date) AS Month,                                       	-- Extracts the month name from the date and aliases it as "Month".
     SUM(Monthly.Total_Orders) AS Orders,                                    	-- Calculates the total number of orders for each month. 
     ROUND(SUM(Monthly.Total_Sales),2) AS Sales                             	-- Calculates the total sales for each month and rounds to 2 decimal places.
-
--- Subquery: Aggregates data at the monthly level.    
-FROM ( 
+FROM ( 										-- Subquery: Aggregates data at the monthly level.  
 	SELECT 
         	orders.date,                                                    -- Selects the date from the orders table. 
         	COUNT(orders.order_id) AS Total_Orders,                         -- Counts the total number of orders for each date. 
