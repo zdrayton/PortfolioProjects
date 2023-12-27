@@ -109,8 +109,7 @@ FROM (
         JOIN pizzas ON order_details.pizza_id = pizzas.pizza_id                                     -- Join the pizza table to the order_details table through pizza_id.
         JOIN orders ON order_details.order_id = orders.order_id                                     -- Join the orders table to the order_details table through order_id.
         GROUP BY pizzas.size                                                                        -- Group total orders and total sales by pizza size.
-		) 
-		AS Total
+	) AS Total
 GROUP BY Size                                                                                       -- Grouping the final result set by pizza sizes.
 ORDER BY Sales DESC;                                                                                -- Ordering the final result set by total sales in descending order.
 
