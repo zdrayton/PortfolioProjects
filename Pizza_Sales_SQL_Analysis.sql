@@ -121,12 +121,12 @@ ORDER BY Sales DESC;                                                            
 ***************************************************/
 SELECT 
 	COUNT(DISTINCT order_id) As Total_Orders,                                                   -- Count the number of distinct order IDs and alias the result as 'Total_Orders'
-    CASE                                                                                            -- Categorize orders based on the time of day using a CASE statement
-	WHEN TIME(orders.time) BETWEEN '09:00:00' AND '12:00:00' THEN '9 AM - 12 PM'
-        WHEN TIME(orders.time) BETWEEN '12:00:01' AND '15:00:00' THEN '12 PM - 3 PM'
-        WHEN TIME(orders.time) BETWEEN '15:00:01' AND '18:00:00' THEN '3 PM - 6 PM'
-        WHEN TIME(orders.time) BETWEEN '18:00:01' AND '21:00:00' THEN '6 PM - 9 PM'
-        ElSE '9 PM - 12 PM'
+	CASE                                                                                        -- Categorize orders based on the time of day using a CASE statement
+		WHEN TIME(orders.time) BETWEEN '09:00:00' AND '12:00:00' THEN '9 AM - 12 PM'
+	        WHEN TIME(orders.time) BETWEEN '12:00:01' AND '15:00:00' THEN '12 PM - 3 PM'
+	        WHEN TIME(orders.time) BETWEEN '15:00:01' AND '18:00:00' THEN '3 PM - 6 PM'
+	        WHEN TIME(orders.time) BETWEEN '18:00:01' AND '21:00:00' THEN '6 PM - 9 PM'
+        	ElSE '9 PM - 12 PM'
 	END AS Hours
 FROM orders                                                                                         -- From the orders table.
 GROUP BY Hours                                                                                      -- Group the results by the 'Hours' category.
