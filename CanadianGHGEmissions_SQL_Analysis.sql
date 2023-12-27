@@ -12,7 +12,7 @@ WHERE                                               -- Filter rows where Region 
 * Total CO2eq Emissions per year over 30 years *
 ***********************************************/
 SELECT 
-	Year,                                           -- Select the Year column
+    Year,                                           -- Select the Year column
     ROUND(SUM(CO2eq),2) AS Total_CO2eq_Mt           -- Select the rounded sum of CO2eq column and alias it as Total_CO2eq_Mt
 FROM ghg_econ_can_prov_terr                         -- From the table ghg_econ_can_prov_terr
 WHERE                                               -- Filter rows where Region is 'Canada' and Source is 'National Inventory Total' 
