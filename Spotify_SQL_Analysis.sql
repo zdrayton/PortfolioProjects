@@ -5,7 +5,7 @@
 SELECT 
 	SUM(streams) AS Streams,                    -- Summing the 'streams' column and aliasing as 'Streams'
 	COUNT("artists(s)_name") AS Total_Artist    -- Counting the occurrences of the 'artists(s)_name' column and aliasing as 'Total_Artists'
-FROM updated_spotify_file;                      -- From the table named 'updated_spotify_file'
+FROM updated_spotify_file;                     	    -- From the table named 'updated_spotify_file'
 
 
 
@@ -17,9 +17,9 @@ SELECT
 	released_year AS Year,                      -- Selecting and aliasing the 'released_year' column as 'Year'
 	SUM(streams) AS Streams,                    -- Summing the 'streams' column and aliasing as 'Streams'
 	COUNT("artists(s)_name") AS Total_Artists   -- Counting the occurrences of the 'artists(s)_name' column and aliasing as 'Total_Artists'
-FROM updated_spotify_file                       -- From the table named 'updated_spotify_file'
-GROUP BY Year                                   -- Grouping the results by the 'Year' column
-ORDER BY Year ASC;                              -- Sorting the results in ascending order based on the 'Year' column
+FROM updated_spotify_file                           -- From the table named 'updated_spotify_file'
+GROUP BY Year                                       -- Grouping the results by the 'Year' column
+ORDER BY Year ASC;                                  -- Sorting the results in ascending order based on the 'Year' column
 
 
 
@@ -30,10 +30,10 @@ ORDER BY Year ASC;                              -- Sorting the results in ascend
 SELECT
 	MAX(streams) AS Streams,                    -- Selecting the maximum value of 'streams' and aliasing it as 'Streams'
 	`artist(s)_name` AS Artist,                 -- Selecting the 'artist(s)_name' column and aliasing it as 'Artist'
-    track_name AS `Track Name`                  -- Selecting the 'track_name' column and aliasing it as 'Track Name'
-FROM updated_spotify_file                       -- From the table named 'updated_spotify_file'
-GROUP BY Artist, `Track Name`                   -- Grouping the results by 'Artist' and 'Track Name'
-ORDER BY Streams DESC;                          -- Ordering the results in descending order based on each tracks total streams
+    	track_name AS `Track Name`                  -- Selecting the 'track_name' column and aliasing it as 'Track Name'
+FROM updated_spotify_file                           -- From the table named 'updated_spotify_file'
+GROUP BY Artist, `Track Name`                       -- Grouping the results by 'Artist' and 'Track Name'
+ORDER BY Streams DESC;                              -- Ordering the results in descending order based on each tracks total streams
 
 
 
@@ -44,11 +44,11 @@ ORDER BY Streams DESC;                          -- Ordering the results in desce
 -- Creating a Common Table Expression (CTE) named RankedArtists to organize data and rank artists based on streams.
 WITH RankedArtists AS (
     SELECT
-        released_year AS Year,                  -- Selecting the released year as Year.
-        streams,                                -- Selecting the streams column
-        `artist(s)_name` AS Artist,             -- Selecting the artist name as Artist.
-        track_name,                             -- Selecting the track names
-        RANK() OVER (PARTITION BY released_year ORDER BY streams DESC) AS ArtistRank  -- Assigning a rank to each artist based on streams, partitioned by released year.
+        released_year AS Year,                  					-- Selecting the released year as Year.
+        streams,                                					-- Selecting the streams column
+        `artist(s)_name` AS Artist,             					-- Selecting the artist name as Artist.
+        track_name,                             					-- Selecting the track names
+        RANK() OVER (PARTITION BY released_year ORDER BY streams DESC) AS ArtistRank    -- Assigning a rank to each artist based on streams, partitioned by released year.
     FROM updated_spotify_file
 )
 -- Selecting specific columns from the RankedArtists CTE where the artist has the highest rank (1) in each released year.
@@ -70,7 +70,7 @@ ORDER BY Year ASC;                            	-- Sorting the result by Year in 
 
 SELECT 
     MAX(`acousticness_%`) AS Acousticness,    	-- Selecting the maximum value of 'acousticness_%' and aliasing it as 'Acousticness'
-	MAX(`danceability_%`) AS Danceability,    	-- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
+MAX(`danceability_%`) AS Danceability,    	-- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
     MAX(`energy_%`) AS Energy,                	-- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
     MAX(`speechiness_%`) AS Speechiness,      	-- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
     MAX(`valence_%`) AS Valence,              	-- Selecting the maximum value of 'danceability_%' and aliasing it as 'Danceability'
